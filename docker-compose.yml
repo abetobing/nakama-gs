@@ -6,7 +6,7 @@ services:
     command: start --insecure --store=attrs=ssd,path=/var/lib/cockroach/
     restart: always
     volumes:
-      - data:/var/lib/cockroach
+      - /opt/cockroach:/var/lib/cockroach
     expose:
       - "8080"
       - "26257"
@@ -31,7 +31,7 @@ services:
     volumes:
       - /opt/nakama/data:/nakama/data
       - ./config:/nakama/config
-      - /opt/nakama/logs:/nakama
+      - /opt/nakama/logs:/nakama/logs
     expose:
       - "7349"
       - "7350"
