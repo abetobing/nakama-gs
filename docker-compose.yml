@@ -29,7 +29,7 @@ services:
     depends_on:
       - cockroachdb
     volumes:
-      - ./:/nakama/data
+      - /opt/nakama/data:/nakama/data
     expose:
       - "7349"
       - "7350"
@@ -44,4 +44,4 @@ services:
       timeout: 5s
       retries: 5
 volumes:
-  /opt/nakama:/nakama/data
+  data:
