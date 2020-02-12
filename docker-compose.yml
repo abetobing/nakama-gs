@@ -21,7 +21,8 @@ services:
       - "-ecx"
       - >
           /nakama/nakama migrate up --database.address root@cockroachdb:26257 &&
-          exec /nakama/nakama --name nakama1 --socket.server_key "papua_nakama" --database.address root@cockroachdb:26257 
+          exec /nakama/nakama --config config.yml
+          # exec /nakama/nakama --name nakama_papua --socket.server_key "nakama_papua" --database.address root@cockroachdb:26257
     restart: always
     links:
       - "cockroachdb:db"
@@ -43,4 +44,4 @@ services:
       timeout: 5s
       retries: 5
 volumes:
-  data:
+  - /opt/nakama:/nakama/data
