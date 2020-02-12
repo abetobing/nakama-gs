@@ -25,7 +25,7 @@ services:
           # exec /nakama/nakama --name nakama_papua --socket.server_key "nakama_papua" --database.address root@cockroachdb:26257
     restart: always
     links:
-      - "cockroachdb:db"
+      - "cockroachdb"
     depends_on:
       - cockroachdb
     volumes:
