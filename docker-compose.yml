@@ -21,7 +21,7 @@ services:
       - "-ecx"
       - >
           /nakama/nakama migrate up --database.address root@cockroachdb:26257 &&
-          exec /nakama/nakama --config config.yml
+          exec /nakama/nakama --config "/nakama/config/config.yml"
           # exec /nakama/nakama --name nakama_papua --socket.server_key "nakama_papua" --database.address root@cockroachdb:26257
     restart: always
     links:
@@ -30,6 +30,7 @@ services:
       - cockroachdb
     volumes:
       - /opt/nakama/data:/nakama/data
+      - ./config:/nakama/config/config.yml
     expose:
       - "7349"
       - "7350"
