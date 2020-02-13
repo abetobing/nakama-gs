@@ -35,7 +35,7 @@ local function match_joined_create_spawn(context, outgoing_payload, incoming_pay
         value = existing_spawns
     }
     nk.storage_write({object})
-    nk.logger_info(("Payload HOOK [match_joined_create_spawn]: %q"):format(outgoing_payload))
+    nk.logger_info(("Outgoing payload: %q"):format(outgoing_payload))
 end
 
 nk.register_rt_after(match_joined_create_spawn, "MatchJoin")

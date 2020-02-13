@@ -27,6 +27,7 @@ runtime:
     - "example_apikey=example_apivalue"
     - "encryptionkey=afefa==e332*u13=971mldq"
   # path: "/nakama/data/modules"
+  path: "/nakama/modules"
   http_key: "defaultkey"
 
 socket:

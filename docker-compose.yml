@@ -30,8 +30,9 @@ services:
       - cockroachdb
     volumes:
       - /opt/nakama/data:/nakama/data
-      - ./config:/nakama/config
       - /opt/nakama/logs:/nakama/logs
+      - ./config:/nakama/config
+      - ./modules/logs:/nakama/modules
     expose:
       - "7349"
       - "7350"
