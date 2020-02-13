@@ -1,6 +1,7 @@
 local nk = require("nakama")
 
 local function match_joined_create_spawn(context, outgoing_payload, incoming_payload)
+    nk.logger_info(("Outgoing payload: %q"):format(outgoing_payload))
     local possible_spawn_pos = {
         {pos = {x = -15, y = 0, z = 17}},
         {pos = {x = 13, y = 0, z = 17}}
@@ -8,7 +9,7 @@ local function match_joined_create_spawn(context, outgoing_payload, incoming_pay
 
     local objectid = {
         collection = "spawns",
-        key = context.match_id
+        key = outgoing_payload.id
     }
     local spawns = nk.storage_read(objectid)
     local existing_spawns = spawns.value
@@ -23,7 +24,7 @@ local function match_joined_create_spawn(context, outgoing_payload, incoming_pay
         existing_spawns[1] = value
     else
         value = possible_spawn_pos[0]
-        existing_spawns[0] = value
+        existing_spawns = {value}
     end
     nk.logger_info(("Value: %q"):format(value))
 
@@ -31,11 +32,10 @@ local function match_joined_create_spawn(context, outgoing_payload, incoming_pay
         collection = "spawns",
         -- key = context.user_id,
         -- user_id = context.user_id,
-        key = context.match_id,
+        key = outgoing_payload.id,
         value = existing_spawns
     }
-    nk.storage_write({object})
-    nk.logger_info(("Outgoing payload: %q"):format(outgoing_payload))
+    nk.storage_write(object)
 end
 
 nk.register_rt_after(match_joined_create_spawn, "MatchJoin")
