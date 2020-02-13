@@ -32,7 +32,7 @@ services:
       - /opt/nakama/data:/nakama/data
       - /opt/nakama/logs:/nakama/logs
       - ./config:/nakama/config
-      - ./modules/logs:/nakama/modules
+      - ./modules:/nakama/modules
     expose:
       - "7349"
       - "7350"
