@@ -30,7 +30,7 @@ runtime:
   http_key: "defaultkey"
 
 socket:
-  protocol: "udp"
+  protocol: "tcp4"
   server_key: "nakama_papua"
   port: 7350
   max_message_size_bytes: 512 # bytes
