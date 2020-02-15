@@ -19,7 +19,11 @@ local function matchmaker_matched(context, matched_users)
     local i = 1
     local spawnpos = {}
     for _, m in ipairs(matched_users) do
-        spawnpos[m.presence["user_id"]] = possible_spawn_pos[i]
+        -- spawnpos[m.presence["user_id"]] = possible_spawn_pos[i]
+        spawnpos[i] = {
+            user_id = m.presence["user_id"],
+            spawnpos = possible_spawn_pos[i]
+        }
         i = i+1
     end
     for _, m in ipairs(matched_users) do
