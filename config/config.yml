@@ -35,17 +35,17 @@ socket:
   server_key: "nakama_papua"
   port: 7350
   max_message_size_bytes: 512 # bytes
-  read_timeout_ms: 3000 # default 10000
-  write_timeout_ms: 3000 # default 10000
+  read_timeout_ms: 10000 # default 10000
+  write_timeout_ms: 10000 # default 10000
   idle_timeout_ms: 30000 # default 60000
-  write_wait_ms: 3000 # default 5000
-  pong_wait_ms: 3000 # defaut 10000
-  ping_period_ms: 1500 # default 8000 # Must be less than pong_wait_ms
+  write_wait_ms: 5000 # default 5000
+  pong_wait_ms: 10000 # defaut 10000
+  ping_period_ms: 8000 # default 8000 # Must be less than pong_wait_ms
   outgoing_queue_size: 64
 
 session:
   encryption_key: "HHueoP937D#2~%=HjwuU"
-  token_expiry_sec: 60
+  token_expiry_sec: 360
 
 social:
   steam:
