@@ -44,7 +44,14 @@ function M.match_loop(context, dispatcher, tick, state, messages)
     end
     -- Broadcast message back to all
     -- local presences = nil
-    dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
+    if msg ~= nil
+    then
+        -- Process based on op_code
+        if msg.op_code == 201
+        then
+            dispatcher.broadcast_message(msg.op_code, msg.data, state.presences, msg.sender)
+        end
+    end
   end
   return state
 end
