@@ -40,15 +40,16 @@ function M.match_loop(context, dispatcher, tick, state, messages)
     for k, v in pairs(decoded) do
       print(("Message key %s contains value %s"):format(k, v))
     end
-    -- PONG message back to sender
-    dispatcher.broadcast_message(1, message.data, {message.sender})
+    -- Broadcast message back to all
+    -- local presences = nil
+    dispatcher.broadcast_message(messages.op_code, message.data, state.presences)
   end
   return state
 end
 
 function M.match_terminate(context, dispatcher, tick, state, grace_seconds)
   local message = "Server shutting down in " .. grace_seconds .. " seconds"
-  dispatcher.broadcast_message(2, message)
+  dispatcher.broadcast_message(901, message)
   return nil
 end
 
