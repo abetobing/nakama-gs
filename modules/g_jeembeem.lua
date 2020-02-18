@@ -26,7 +26,8 @@ end
 function M.match_leave(context, dispatcher, tick, state, presences)
   for _, presence in ipairs(presences) do
     state.presences[presence.session_id] = nil
-  end
+    nk.logger_info(("---- someone leave the match: %q -------"):format(presence.user_id))
+end
   return state
 end
 
