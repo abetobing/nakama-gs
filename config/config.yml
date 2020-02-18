@@ -29,6 +29,7 @@ runtime:
   # path: "/nakama/data/modules"
   path: "/nakama/modules"
   http_key: "defaultkey"
+  registry_size: 256
 
 socket:
   protocol: "tcp4"
