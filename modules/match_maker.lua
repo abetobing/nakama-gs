@@ -24,7 +24,7 @@ local function matchmaker_matched(context, matched_users)
             UserId = m.presence["user_id"],
             spawnpos = possible_spawn_pos[i]
         }
-        i = i+1
+        i = i + 1
     end
     for _, m in ipairs(matched_users) do
         local stored_object = {
@@ -36,7 +36,7 @@ local function matchmaker_matched(context, matched_users)
         nk.storage_write({stored_object})
     end
 
-    --   local matchid = nk.match_create("match", {debug = true, expected_users = matched_users})
+    local matchid = nk.match_create("g_jeembeem", {debug = true, expected_users = matched_users})
 
     --   if matched_users[1].properties["mode"] ~= "authoritative" then
     --     return nil
@@ -45,7 +45,7 @@ local function matchmaker_matched(context, matched_users)
     --     return nil
     --   end
 
-    -- return matchid;
-    nk.logger_info("-----------------------------------------------")
+    nk.logger_info(("--------%q--------"):format(matchid))
+    return matchid
 end
 nk.register_matchmaker_matched(matchmaker_matched)
