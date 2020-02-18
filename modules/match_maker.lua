@@ -34,7 +34,8 @@ local function matchmaker_matched(context, matched_users)
             collection = "match_state",
             key = matchid,
             user_id = nil,
-            value = {spawnpos = spawnpos}
+            value = {spawnpos = spawnpos},
+            permission_read = 2, permission_write = 1
         }
         nk.storage_write({stored_object})
     -- end
