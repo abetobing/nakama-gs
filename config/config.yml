@@ -34,7 +34,7 @@ socket:
   protocol: "tcp4"
   server_key: "nakama_papua"
   port: 7350
-  max_message_size_bytes: 512 # bytes
+  max_message_size_bytes: 4096 # bytes
   read_timeout_ms: 10000 # default 10000
   write_timeout_ms: 10000 # default 10000
   idle_timeout_ms: 30000 # default 60000
