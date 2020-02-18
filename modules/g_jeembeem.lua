@@ -43,7 +43,7 @@ function M.match_loop(context, dispatcher, tick, state, messages)
     end
     -- Broadcast message back to all
     -- local presences = nil
-    dispatcher.broadcast_message(messages.op_code, message.data, state.presences)
+    dispatcher.broadcast_message(messages.op_code, message.data, nil)
   end
   return state
 end
