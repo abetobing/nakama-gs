@@ -36,6 +36,7 @@ function M.match_loop(context, dispatcher, tick, state, messages)
     print(("Presence %s named %s"):format(presence.user_id, presence.username))
   end
   for _, msg in ipairs(messages) do
+    nk.logger_info(("Received MSG: %s"):format(nk.json_encode(msg)))
     nk.logger_info(("Received %s from %s"):format(msg.data, msg.sender.username))
     local decoded = nk.json_decode(msg.data)
     for k, v in pairs(decoded) do
