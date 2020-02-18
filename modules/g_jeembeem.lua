@@ -35,15 +35,15 @@ function M.match_loop(context, dispatcher, tick, state, messages)
   for _, presence in pairs(state.presences) do
     print(("Presence %s named %s"):format(presence.user_id, presence.username))
   end
-  for _, message in ipairs(messages) do
-    print(("Received %s from %s"):format(message.data, message.sender.username))
-    local decoded = nk.json_decode(message.data)
+  for _, msg in ipairs(messages) do
+    nk.logger_info(("Received %s from %s"):format(msg.data, msg.sender.username))
+    local decoded = nk.json_decode(msg.data)
     for k, v in pairs(decoded) do
-      print(("Message key %s contains value %s"):format(k, v))
+        nk.logger_info(("Message key %s contains value %s"):format(k, v))
     end
     -- Broadcast message back to all
     -- local presences = nil
-    dispatcher.broadcast_message(messages.op_code, message.data, nil)
+    dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
   end
   return state
 end
