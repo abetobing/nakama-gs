@@ -6,7 +6,7 @@ function M.match_init(context, setupstate)
   local gamestate = {
     presences = {}
   }
-  local tickrate = 60 -- per sec
+  local tickrate = 20 -- per sec
   local label = ""
   return gamestate, tickrate, label
 end
