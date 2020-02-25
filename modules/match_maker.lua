@@ -32,7 +32,7 @@ local function matchmaker_matched(context, matched_users)
 
         playerroles[i] = {
             UserId = m.presence["user_id"],
-            roles = possible_roles[i]
+            role = possible_roles[i]
         }
 
         i = i + 1
