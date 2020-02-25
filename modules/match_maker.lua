@@ -13,17 +13,28 @@ local function matchmaker_matched(context, matched_users)
         {x = -15, y = 0, z = 17},
         {x = 13, y = 0, z = 17}
     }
+    local possible_roles = {
+        "P01",  -- player 01
+        "E01"   -- enemy 01
+    }
     -- possible_spawn_pos[#possible_spawn_pos + 1] = {x = -15, y = 0, z = 17}
     -- possible_spawn_pos[#possible_spawn_pos + 1] = {x = 13, y = 0, z = 17}
 
     local i = 1
     local spawnpos = {}
+    local playerroles = {}
     for _, m in ipairs(matched_users) do
         -- spawnpos[m.presence["user_id"]] = possible_spawn_pos[i]
         spawnpos[i] = {
             UserId = m.presence["user_id"],
             spawnpos = possible_spawn_pos[i]
         }
+
+        playerroles[i] = {
+            UserId = m.presence["user_id"],
+            roles = possible_roles[i]
+        }
+
         i = i + 1
     end
 
@@ -34,7 +45,11 @@ local function matchmaker_matched(context, matched_users)
             collection = "match_state",
             key = matchid,
             user_id = nil,
-            value = {spawnpos = spawnpos},
+            value = {
+                spawnpos = spawnpos,
+                roles = playerroles,
+                level = "level1"
+            },
             permission_read = 2, permission_write = 1
         }
         nk.storage_write({stored_object})
