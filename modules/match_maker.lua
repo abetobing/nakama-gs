@@ -1,9 +1,9 @@
 local nk = require("nakama")
 
 local function matchmaker_matched(context, matched_users)
-    nk.logger_info("--------------MatchMakerMatched----------------")
-    nk.logger_info(("Context: %q"):format(nk.json_encode(context)))
-    nk.logger_info(("Matched users: %q"):format(nk.json_encode(matched_users)))
+    -- nk.logger_info("--------------MatchMakerMatched----------------")
+    -- nk.logger_info(("Context: %q"):format(nk.json_encode(context)))
+    -- nk.logger_info(("Matched users: %q"):format(nk.json_encode(matched_users)))
 
     if #matched_users ~= 2 then
         return nil
@@ -63,7 +63,7 @@ local function matchmaker_matched(context, matched_users)
     --     return nil
     --   end
 
-    nk.logger_info(("-------MatchID: %q created--------"):format(matchid))
+    -- nk.logger_info(("-------MatchID: %q created--------"):format(matchid))
     return matchid
 end
 nk.register_matchmaker_matched(matchmaker_matched)
