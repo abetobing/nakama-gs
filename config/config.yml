@@ -4,8 +4,8 @@ data_dir: "/nakama/data"
 logger:
   stdout: false
   level: "info"
-  rotation: true
-  max_size: 32
+  rotation: false
+  max_size: 16
   max_age: 1
   file: "/nakama/logs/logfile.log"
 
@@ -42,7 +42,7 @@ socket:
   write_wait_ms: 5000 # default 5000
   pong_wait_ms: 10000 # defaut 10000
   ping_period_ms: 8000 # default 8000 # Must be less than pong_wait_ms
-  outgoing_queue_size: 64
+  outgoing_queue_size: 16
 
 session:
   encryption_key: "HHueoP937D#2~%=HjwuU"
@@ -70,10 +70,10 @@ cluster:
 # For staging purpose
 # limit some resources
 match:
-  input_queue_size: 8
-  call_queue_size: 32
-  join_attempt_queue_size: 32
-  deferred_queue_size: 32
+  input_queue_size: 128
+  call_queue_size: 128
+  join_attempt_queue_size: 128
+  deferred_queue_size: 128
   join_marker_deadline_ms: 15000
 leaderboard:
   callback_queue_size: 128
