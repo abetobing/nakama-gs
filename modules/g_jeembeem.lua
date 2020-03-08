@@ -32,16 +32,11 @@ end
 end
 
 function M.match_loop(context, dispatcher, tick, state, messages)
-  for _, presence in pairs(state.presences) do
-    -- print(("Presence %s named %s"):format(presence.user_id, presence.username))
-  end
   for _, msg in ipairs(messages) do
     -- nk.logger_info(("Received MSG: %s"):format(nk.json_encode(msg)))
     -- nk.logger_info(("Received %s from %s"):format(msg.data, msg.sender.username))
     local decoded = nk.json_decode(msg.data)
-    for k, v in pairs(decoded) do
-        -- nk.logger_info(("Message key %s contains value %s"):format(k, v))
-    end
+
     -- Broadcast message back to all
     -- local presences = nil
     if msg ~= nil
@@ -49,7 +44,8 @@ function M.match_loop(context, dispatcher, tick, state, messages)
         -- Process based on op_code
         if msg.op_code == 201
         then
-            dispatcher.broadcast_message(msg.op_code, msg.data, state.presences, msg.sender)
+          -- nk.logger_info(("Broadcasting message MSG: %s"):format(nk.json_encode(msg)))
+          dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
         end
     end
   end
