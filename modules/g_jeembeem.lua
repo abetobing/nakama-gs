@@ -41,13 +41,15 @@ function M.match_loop(context, dispatcher, tick, state, messages)
     -- local presences = nil
     if msg ~= nil then
       -- Process based on op_code
-      if msg.op_code == 201 then
-        -- nk.logger_info(("Broadcasting message MSG: %s"):format(nk.json_encode(msg)))
+      if msg.op_code == 100 then
+        nk.logger_info(("Broadcasting message MSG: %s"):format(nk.json_encode(msg)))
+        dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
+      elseif msg.op_code == 201 then
         dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
       elseif msg.op_code == 301 then
         dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
       elseif (msg.op_code == 401) then
-        dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender);
+        dispatcher.broadcast_message(msg.op_code, msg.data, nil, msg.sender)
       end
     end
   end
