@@ -15,7 +15,7 @@ services:
       - "8080:8080"
   nakama:
     container_name: nakama
-    image: heroiclabs/nakama:2.10.0
+    image: heroiclabs/nakama:2.11.0
     entrypoint:
       - "/bin/sh"
       - "-ecx"
@@ -45,7 +45,7 @@ services:
       - "7353:7353"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7350/"]
-      interval: 10s
+      interval: 30s
       timeout: 5s
       retries: 5
 volumes:
